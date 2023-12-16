@@ -1,0 +1,39 @@
+@import "../../../shared/variables.scss";
+
+.admin-dashboard {
+  position: fixed;
+  padding: 100px 30px 30px 30px;
+  width: 310px;
+  height: 100vh;
+  min-height: 800px;
+
+  background-color: #000000;
+  border-right: 1px solid rgba(255, 255, 255, 0.5);
+
+  &__pages {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    li {
+      width: 100%;
+      a {
+        display: block;
+        width: 100%;
+        font-size: 18px;
+      }
+    }
+  }
+
+  &__item {
+    a {
+      color: $grey;
+      font-size: 18px;
+    }
+  }
+
+  &__item_active {
+    a {
+      color: $blue;
+    }
+  }
+}
