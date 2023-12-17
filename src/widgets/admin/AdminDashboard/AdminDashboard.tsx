@@ -7,7 +7,6 @@ import { useEffect, useState } from "react";
 const AdminDashboard = () => {
   const [activePage, setActivePage] = useState<string>("");
   const pages = [
-    { id: 1, page: "Главная", path: "/" },
     { id: 2, page: "Фотографии", path: "/admin/picture" },
     {
       id: 3,
