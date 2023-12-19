@@ -1,7 +1,13 @@
+import LoginFeature from "@/features/AuthFeatures/LoginFeature/LoginFeature";
 import React from "react";
 
 const SignInPage = () => {
-  return <div>SignInPage</div>;
+  return (
+    <div>
+      {" "}
+      <LoginFeature />{" "}
+    </div>
+  );
 };
 
 export default SignInPage;

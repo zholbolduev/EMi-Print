@@ -1,8 +1,13 @@
 "use client";
 
 import { combineReducers, configureStore } from "@reduxjs/toolkit";
+import loginReducer from "../../features/AuthFeatures/LoginFeature/LoginFeatureSlice";
+import registerReducer from "../../features/AuthFeatures/RegisterFeature/RegisterFeatureSlice";
 
-export const rootReducers = combineReducers({});
+export const rootReducers = combineReducers({
+  registerReducer,
+  loginReducer,
+});
 
 export const setupStore = () => {
   return configureStore({
