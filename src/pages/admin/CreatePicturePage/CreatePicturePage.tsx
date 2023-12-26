@@ -9,18 +9,32 @@ import Button from "@/shared/UI/Button/Button";
 import { useEffect, useState } from "react";
 
 const CreatePicturePage = () => {
+  const [title, setTitle] = useState<string>("");
+  const [description, setDescription] = useState<string>("");
   const [size, setSize] = useState<string[]>([""]);
   const [type, setType] = useState<string[]>([""]);
   const [minImageCount, setMinImageCount] = useState<number>(0);
   const [maxImageCount, setMaxImageCount] = useState<number>(0);
   const [isAvailable, setIsAvailable] = useState<boolean>(false);
   const [haveToCheck, setHaveToCheck] = useState<boolean>(false);
+  const [priceWithText, setPriceWithText] = useState<string>("");
+  const [priceWithoutText, setPriceWithoutText] =
+    useState<string>("");
+  const [additional, setAdditional] = useState<string>("");
 
   return (
     <div className="create-picture">
       <h3>Создание продукта фотографий</h3>
-      <InputWithLabel label="Заголовок" required />
-      <InputWithLabel label="Описание" type="textarea" />
+      <InputWithLabel
+        onChange={(e) => setTitle(e.target.value)}
+        label="Заголовок"
+        required
+      />
+      <InputWithLabel
+        onChange={(e) => setDescription(e.target.value)}
+        label="Описание"
+        type="textarea"
+      />
       <Select
         options={["19", "20"]}
         placeholder="Size"
@@ -57,8 +71,22 @@ const CreatePicturePage = () => {
         label="Необходимо уточнить"
       />
       <Button>Загрузить Фотографии</Button>
-      <InputWithLabel label="Цена" required />
-      <InputWithLabel label="Дополнительно" type="textarea" />
+      <InputWithLabel
+        onChange={(e) => setPriceWithoutText(e.target.value)}
+        label="Цена без текста"
+        required
+      />
+      <InputWithLabel
+        onChange={(e) => setPriceWithText(e.target.value)}
+        label="Цена с текстом"
+        required
+      />
+
+      <InputWithLabel
+        onChange={(e) => setAdditional(e.target.value)}
+        label="Дополнительно"
+        type="textarea"
+      />
 
       <Button color="green">Сохранить</Button>
     </div>
