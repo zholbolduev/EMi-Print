@@ -2,9 +2,10 @@
   display: flex;
 
   &_right {
+    min-height: 100vh;
+    height: 100%;
     width: 100%;
-    height: 100vh;
-    padding: 30px 30px 30px 340px;
+    padding: 50px 30px 30px 340px;
     background-color: #111;
     color: white;
   }

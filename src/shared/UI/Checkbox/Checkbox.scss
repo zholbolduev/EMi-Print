@@ -1,0 +1,11 @@
+@import "../../variables.scss";
+
+.checkbox {
+  min-width: 32px;
+  height: 32px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: 2px solid $grey;
+  border-radius: 10px;
+}

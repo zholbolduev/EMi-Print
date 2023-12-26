@@ -1,5 +1,9 @@
-import Link from "next/link";
+"use client";
+
+import { useRouter } from "next/router";
 import "./Navbar.scss";
+import Link from "next/link";
+import { usePathname } from "next/navigation";
 
 const Navbar = () => {
   const pages = [
@@ -7,7 +11,10 @@ const Navbar = () => {
     { id: 2, page: "Регистрация", path: "/sign-up" },
     { id: 3, page: "Админ", path: "/admin/picture" },
   ];
-  return (
+
+  const pathname = usePathname();
+
+  return pathname?.slice(0, 6) !== "/admin" ? (
     <nav className="navbar">
       <ul>
         {pages.map((page) => (
@@ -17,7 +24,7 @@ const Navbar = () => {
         ))}
       </ul>
     </nav>
-  );
+  ) : null;
 };
 
 export default Navbar;

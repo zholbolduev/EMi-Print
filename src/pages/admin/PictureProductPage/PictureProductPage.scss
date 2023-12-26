@@ -1,0 +1,100 @@
+@import "../../../shared/variables.scss";
+
+.picture-product-page {
+  display: flex;
+  flex-direction: column;
+  gap: 30px;
+  button,
+  a {
+    padding: 10px 20px;
+    border-radius: $radius;
+  }
+
+  &__header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    h3 {
+      font-size: 32px;
+      font-weight: 500;
+    }
+
+    a {
+      border: 2px solid $green;
+      color: $green;
+    }
+  }
+
+  &__actions {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+
+    button:nth-child(1) {
+      border: 2px solid $blue;
+      color: $blue;
+    }
+    &-dlt-btn {
+      cursor: auto;
+      border: 2px solid $grey;
+      color: $grey;
+    }
+
+    &-dlt-btn_active {
+      border: 2px solid $danger;
+      color: $danger;
+    }
+  }
+
+  &__params {
+    padding: 0 10px;
+    height: 55px;
+    display: grid;
+    grid-template-columns: 50px 50px 1fr 1fr 1fr 1fr;
+    align-items: center;
+
+    li:first-child {
+      button {
+        padding: 0;
+        width: 32px;
+        min-width: 32px;
+        min-height: 32px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        border: 2px solid white;
+        border-radius: $radius;
+      }
+    }
+  }
+
+  &__list {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+  }
+
+  &__item {
+    padding: 10px;
+    height: 60px;
+    display: grid;
+    grid-template-columns: 50px 50px 1fr 1fr 1fr 1fr;
+    align-items: center;
+    border: 2px solid white;
+    border-radius: $radius;
+
+    li:first-child {
+      button {
+        padding: 0;
+        width: 32px;
+        min-width: 32px;
+        min-height: 32px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        border: 2px solid white;
+        border-radius: $radius;
+      }
+    }
+  }
+}

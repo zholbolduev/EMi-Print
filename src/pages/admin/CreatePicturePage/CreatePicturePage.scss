@@ -1,0 +1,9 @@
+.create-picture {
+  display: flex;
+  flex-direction: column;
+  gap: 30px;
+  h3 {
+    font-size: 32px;
+    font-weight: 500;
+  }
+}

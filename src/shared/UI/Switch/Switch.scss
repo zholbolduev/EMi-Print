@@ -1,0 +1,33 @@
+@import "../../variables.scss";
+
+.switch {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+
+  label {
+    font-weight: 500;
+  }
+
+  &__btn,
+  &__btn_active {
+    width: 60px;
+    border: $border-light;
+    border-radius: 50px;
+    display: flex;
+    justify-content: flex-start;
+    transition: 0.5s;
+
+    div {
+      height: 24px;
+      width: 24px;
+      background-color: #fff;
+      border-radius: 50%;
+    }
+  }
+
+  &__btn_active {
+    justify-content: flex-end;
+    background-color: $blue;
+  }
+}
