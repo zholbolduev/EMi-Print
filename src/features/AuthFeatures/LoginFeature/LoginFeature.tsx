@@ -8,6 +8,8 @@ import {
   useAppSelector,
 } from "../../../shared/hooks/redux.hook";
 import Link from "next/link";
+import eye from "../assets/eye.svg";
+import eye_closed from "../assets/eye_closed.svg";
 
 const LoginFeature = () => {
   const dispatch = useAppDispatch();
@@ -16,6 +18,7 @@ const LoginFeature = () => {
   const [email, setEmail] = useState<string>("");
   const [password, setPassword] = useState<string>("");
   const [isError, setIsError] = useState<boolean>(false);
+  const [showPassword, setShowPassword] = useState<boolean>(false);
 
   const logToSystem = () => {
     if (!email || !password) {
@@ -35,64 +38,51 @@ const LoginFeature = () => {
   };
 
   return (
-    <div>
-      <div className="align">
-        <div className="grid">
-          <form action="/" method="post" className="form login">
-            <header className="login__header">
-              <h3 className="login__title">Login</h3>
-            </header>
-
-            <div className="login__body">
-              <div className="form__field">
-                <input
-                  type="email"
-                  className="login__input"
-                  placeholder="Email"
-                  onChange={(e: ChangeEvent<HTMLInputElement>) =>
-                    handleInputChange(e, setEmail)
-                  }
-                  required
-                />
-              </div>
-
-              <div className="form__field">
-                <input
-                  type="password"
-                  className="login__input"
-                  placeholder="Password"
-                  onChange={(e: ChangeEvent<HTMLInputElement>) =>
-                    handleInputChange(e, setPassword)
-                  }
-                  required
-                />
-              </div>
-            </div>
-
-            <footer className="login__footer">
-              <button className="login__submit" onClick={logToSystem}>
-                Login
-              </button>
-
-              <p>
-                <span className="icon icon--info">?</span>
-                <a href="#" className="login__forgot-password">
-                  Forgot Password
-                </a>
-              </p>
-              <p>
-                <span className="icon icon--info">?</span>
-                <a href="/sign-up" className="login__forgot-password">
-                  Нету аккаунта?
-                </a>
-              </p>
-            </footer>
-
-            {isError && <p style={{ color: "red" }}>Заполните все поля</p>}
-            {error && <p style={{ color: "red" }}>{error}</p>}
-          </form>
+    <div className="loginFeature">
+      <div className="loginFeature__input">
+        <p>Почта</p>
+        <input
+          onChange={(e: ChangeEvent<HTMLInputElement>) =>
+            handleInputChange(e, setEmail)
+          }
+          type="text"
+        />
+      </div>
+      <div className="loginFeature__input">
+        <p>Пароль</p>
+        <div id="loginFeature__password">
+          <input
+            onChange={(e: ChangeEvent<HTMLInputElement>) =>
+              handleInputChange(e, setPassword)
+            }
+            type={showPassword ? "text" : "password"}
+          />
+          <img
+            onClick={() => setShowPassword(!showPassword)}
+            src={showPassword ? eye : eye_closed}
+            alt=""
+          />
         </div>
       </div>
+      <p className="loginFeature__warning">{error}</p>
+      <div className="loginFeature__additional">
+        <div className="loginFeature__additional_btns">
+          <div className="loginFeature__additional_btns_remember-me">
+            <a href="sign-up" className="login__forgot-password">
+              Ещё нет аккаунта?{" "}
+            </a>{" "}
+          </div>
+          <a href="#" className="loginFeature__additional_btns_forgot-password">
+            Забыли пароль?{" "}
+          </a>
+        </div>
+        <div className="loginFeature__additional_no-account">
+          {isError && <p style={{ color: "red" }}>Заполните все поля</p>}
+          {/* {error && <p style={{ color: "red" }}>{error}</p>} */}
+        </div>
+      </div>
+
+      <button onClick={logToSystem}>Войти</button>
     </div>
   );
 };

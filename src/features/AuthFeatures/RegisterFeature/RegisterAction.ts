@@ -11,10 +11,7 @@ export const registerAction =
     email: string,
     phoneNumber: string,
     password: string,
-    confirmPassword: string,
-    role: string,
-    companyName: string,
-    userProfileImage: string
+    confirmPassword: string
   ) =>
   async (dispatch: AppDispatch) => {
     try {
@@ -51,12 +48,6 @@ export const registerAction =
         return;
       }
 
-      // const user = new FormData();
-      // user.append("name", name);
-      // user.append("email", email);
-      // user.append("password", password);
-      // user.append("confirmPassword", passwordConfirm);
-
       const user = {
         name,
         lastName,
@@ -64,14 +55,11 @@ export const registerAction =
         phoneNumber,
         password,
         confirmPassword,
-        role,
-        companyName,
-        userProfileImage,
       };
 
       const response = await axios.post<ITokens>(`${baseAPI}/register`, user, {
         headers: {
-          "Content-Type": "application/json;charset=UTF-8", // Указываем правильный заголовок для FormData
+          "Content-Type": "application/json;charset=UTF-8",
         },
       });
 

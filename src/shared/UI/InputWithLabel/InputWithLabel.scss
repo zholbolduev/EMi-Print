@@ -1,0 +1,25 @@
+@import "../../variables.scss";
+
+.input-with-label {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+
+  label {
+    font-weight: 500;
+
+    span {
+      color: $danger-light;
+    }
+  }
+
+  input {
+    padding: 10px 20px;
+    height: 50px;
+    border-radius: $radius;
+    border: 1px solid #666;
+    font-size: 18px;
+    background-color: transparent;
+    color: white;
+  }
+}

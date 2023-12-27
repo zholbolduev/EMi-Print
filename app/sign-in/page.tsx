@@ -1,3 +1,3 @@
-import SignInPage from "@/pages/SignInPage/SignInPage";
+import SignInPage from "@/pages/AuthPage/SignInPage/SignInPage";
 
 export default SignInPage;

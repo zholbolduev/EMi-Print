@@ -8,6 +8,8 @@ import {
 import { registerAction } from "./RegisterAction";
 import "./RegisterFeature.scss";
 import { ChangeEvent, useState } from "react";
+import eye from "../assets/eye.svg";
+import eye_closed from "../assets/eye_closed.svg";
 
 const RegisterFeature = () => {
   const dispatch = useAppDispatch();
@@ -19,30 +21,8 @@ const RegisterFeature = () => {
   const [email, setEmail] = useState<string>("");
   const [phoneNumber, setPhoneNumber] = useState<string>("");
   const [password, setPassword] = useState<string>("");
+  const [showPassword, setShowPassword] = useState<boolean>(false);
   const [confirmPassword, setConfirmPassword] = useState<string>("");
-  const [role, setRole] = useState<string>("");
-  const handleRoleChange = (e: ChangeEvent<HTMLSelectElement>) => {
-    setRole(e.target.value);
-  };
-  const [companyName, setCompanyNamen] = useState<string>("");
-
-  const [userProfileImage, setUserProfileImage] = useState<
-    string | ArrayBuffer | null
-  >("");
-
-  const handleImageChange = (e: ChangeEvent<HTMLInputElement>) => {
-    const file = e.target.files?.[0];
-
-    if (file) {
-      const reader = new FileReader();
-
-      reader.onloadend = () => {
-        setUserProfileImage(reader.result);
-      };
-
-      reader.readAsDataURL(file);
-    }
-  };
 
   const logToSystem = () => {
     dispatch(
@@ -52,171 +32,99 @@ const RegisterFeature = () => {
         email,
         phoneNumber,
         password,
-        confirmPassword,
-        role,
-        companyName,
-        userProfileImage
+        confirmPassword
       )
     );
   };
 
   return (
-    <div className="align">
-      <div className="grid">
-        <form action="/" method="post" className="form login">
-          <header className="login__header">
-            <h3 className="login__title">Register</h3>
-          </header>
-
-          <div className="login__body">
-            <div className="form__field">
-              <input
-                type="text"
-                className="login__input"
-                placeholder="First Name"
-                name="name"
-                onChange={(e: ChangeEvent<HTMLInputElement>) =>
-                  setName(e.target.value)
-                }
-                required
-              />
-            </div>
-
-            <div className="form__field">
-              <input
-                type="text"
-                className="login__input"
-                placeholder="Last Name"
-                name="lastName"
-                onChange={(e: ChangeEvent<HTMLInputElement>) =>
-                  setLastName(e.target.value)
-                }
-                required
-              />
-            </div>
-
-            <div className="form__field">
-              <input
-                type="email"
-                className="login__input"
-                placeholder="Email"
-                name="email"
-                onChange={(e: ChangeEvent<HTMLInputElement>) =>
-                  setEmail(e.target.value)
-                }
-                required
-              />
-            </div>
-
-            <div className="form__field">
-              <input
-                type="text"
-                className="login__input"
-                placeholder="Phone Number"
-                name="phoneNumber"
-                onChange={(e: ChangeEvent<HTMLInputElement>) =>
-                  setPhoneNumber(e.target.value)
-                }
-                required
-              />
-            </div>
-
-            <div className="form__field">
-              <input
-                type="password"
-                className="login__input"
-                placeholder="Password"
-                name="password"
-                onChange={(e: ChangeEvent<HTMLInputElement>) =>
-                  setPassword(e.target.value)
-                }
-                required
-              />
-            </div>
-
-            <div className="form__field">
-              <input
-                type="password"
-                className="login__input"
-                placeholder="Confirm Password"
-                name="confirmPassword"
-                onChange={(e: ChangeEvent<HTMLInputElement>) =>
-                  setConfirmPassword(e.target.value)
-                }
-                required
-              />
-            </div>
-
-            <div className="form__field">
-              <select
-                className="login__input"
-                name="role"
-                onChange={handleRoleChange}
-                required
-              >
-                <option value="" disabled selected hidden>
-                  Select Role
-                </option>
-                <option value="1">Corporate</option>
-                <option value="2">Admin</option>
-                <option value="3">Regular User</option>
-                <option value="4">Anonymous</option>
-              </select>
-            </div>
-
-            <div className="form__field">
-              <input
-                type="text"
-                className="login__input"
-                placeholder="Company Name"
-                name="companyName"
-                onChange={(e: ChangeEvent<HTMLInputElement>) =>
-                  setCompanyNamen(e.target.value)
-                }
-                required
-              />
-            </div>
-
-            <div className="form__field">
-              <input
-                type="file"
-                className="login__input"
-                accept="image/*"
-                onChange={handleImageChange}
-                required
-              />
-              <img
-                src={
-                  userProfileImage instanceof ArrayBuffer
-                    ? ""
-                    : userProfileImage
-                }
-                alt="Preview"
-                style={{ maxWidth: "100%", maxHeight: "100%" }}
-              />
-            </div>
-          </div>
-
-          <footer className="login__footer">
-            <Link
-              className="login__submit"
-              onClick={logToSystem}
-              href="/"
-              passHref
-            >
-              Sing up
-            </Link>
-
-            <p>
-              <span className="icon icon--info">?</span>
-              <a href="/sing-in" className="login__forgot-password">
-                вернуться назад{" "}
-              </a>
-            </p>
-          </footer>
-          <p>{error}</p>
-        </form>
+    <div className="registerFeature">
+      <div className="registerFeature__input">
+        <p>Имя</p>
+        <input
+          onChange={(e: ChangeEvent<HTMLInputElement>) =>
+            setName(e.target.value)
+          }
+          type="text"
+        />
       </div>
+      <div className="registerFeature__input">
+        <p>Фамилия</p>
+        <input
+          onChange={(e: ChangeEvent<HTMLInputElement>) =>
+            setLastName(e.target.value)
+          }
+          type="text"
+        />
+      </div>
+      <div className="registerFeature__input">
+        <p>Почта</p>
+        <input
+          onChange={(e: ChangeEvent<HTMLInputElement>) =>
+            setEmail(e.target.value)
+          }
+          type="text"
+        />
+      </div>
+
+      <div className="registerFeature__input">
+        <p>Номер телефона</p>
+        <input
+          onChange={(e: ChangeEvent<HTMLInputElement>) =>
+            setPhoneNumber(e.target.value)
+          }
+          type="text"
+        />
+      </div>
+
+      <div className="registerFeature__input">
+        <p>Пароль</p>
+        <div id="registerFeature__password">
+          <input
+            onChange={(e: ChangeEvent<HTMLInputElement>) =>
+              setPassword(e.target.value)
+            }
+            type={showPassword ? "text" : "password"}
+          />
+          <img
+            onClick={() => setShowPassword(!showPassword)}
+            src={showPassword ? eye : eye_closed}
+            alt=""
+          />
+        </div>
+      </div>
+
+      <div className="registerFeature__input">
+        <p>Потвердите Пароль</p>
+        <div id="registerFeature__password">
+          <input
+            onChange={(e: ChangeEvent<HTMLInputElement>) =>
+              setConfirmPassword(e.target.value)
+            }
+            type={showPassword ? "text" : "password"}
+          />
+          <img
+            onClick={() => setShowPassword(!showPassword)}
+            src={showPassword ? eye : eye_closed}
+            alt=""
+          />
+        </div>
+      </div>
+
+      <p className="registerFeature__warning">{error}</p>
+      <div className="registerFeature__additional">
+        <div className="registerFeature__additional__has-account">
+          <a href="/sign-in">Уже есть аккаунт? Войти</a>
+        </div>
+      </div>
+
+      <button
+        onClick={() => {
+          logToSystem();
+        }}
+      >
+        Регистрация
+      </button>
     </div>
   );
 };

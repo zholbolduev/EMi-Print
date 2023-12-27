@@ -1,12 +1,32 @@
+"use client";
+
 import Link from "next/link";
+import { useEffect, useState } from "react";
 import "./Navbar.scss";
 
 const Navbar = () => {
+  const [shouldHideNavbar, setShouldHideNavbar] = useState(false);
+
+  useEffect(() => {
+    const currentPath = window.location.pathname;
+    const hidePaths = ["/sign-in", "/sign-up", "/no-password"];
+
+    if (hidePaths.includes(currentPath)) {
+      setShouldHideNavbar(true);
+    } else {
+      setShouldHideNavbar(false);
+    }
+  }, []);
+
+  if (shouldHideNavbar) {
+    return null;
+  }
+
   const pages = [
     { id: 1, page: "Главная", path: "/" },
-    { id: 2, page: "Регистрация", path: "/sign-up" },
-    { id: 3, page: "Админ", path: "/admin/picture" },
+    { id: 2, page: "Админ", path: "/admin/picture" },
   ];
+
   return (
     <nav className="navbar">
       <ul>
