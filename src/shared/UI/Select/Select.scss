@@ -1,0 +1,81 @@
+@import "../../variables.scss";
+
+.select {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+
+  label {
+    font-weight: 500;
+
+    span {
+      color: $danger-light;
+    }
+  }
+
+  &__wrapper {
+    display: flex;
+    flex-direction: column;
+    width: 300px;
+    position: relative;
+
+    #select-btn {
+      padding: 10px 20px;
+      height: 50px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      border: $border-light;
+      border-radius: $radius;
+      color: white;
+
+      p {
+        span {
+          color: $danger-light;
+        }
+      }
+    }
+  }
+
+  &__options {
+    position: absolute;
+    z-index: 10;
+    top: 60px;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    border-radius: $radius;
+    background-color: #000;
+
+    li {
+      button {
+        display: flex;
+        align-items: center;
+        width: 100%;
+        padding: 20px;
+      }
+    }
+    li:first-child {
+      border-top-right-radius: 15px;
+      border-top-left-radius: 15px;
+    }
+
+    li:last-child {
+      border-bottom-right-radius: 15px;
+      border-bottom-left-radius: 15px;
+    }
+  }
+
+  &__item {
+    button {
+      color: white;
+    }
+  }
+
+  &__item_active {
+    background-color: rgb(50, 50, 50);
+    button {
+      color: $blue;
+    }
+  }
+}

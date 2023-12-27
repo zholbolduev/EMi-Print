@@ -1,0 +1,32 @@
+@import "../../variables.scss";
+
+.ui-btn,
+.ui-btn_green,
+.ui-btn_blue,
+.ui-btn_red,
+.ui-btn_grey {
+  padding: 10px 20px;
+  height: 50px;
+  border-radius: $radius;
+}
+
+.ui-btn,
+.ui-btn_blue {
+  color: $blue;
+  border: 2px solid $blue;
+}
+
+.ui-btn_green {
+  color: $green;
+  border: 2px solid $green;
+}
+
+.ui-btn_red {
+  color: $danger;
+  border: 2px solid $danger;
+}
+
+.ui-btn_grey {
+  color: $grey;
+  border: 2px solid $grey;
+}

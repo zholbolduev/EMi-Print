@@ -2,7 +2,9 @@
 
 import Link from "next/link";
 import { useEffect, useState } from "react";
+import { useRouter } from "next/router";
 import "./Navbar.scss";
+import { usePathname } from "next/navigation";
 
 const Navbar = () => {
   const [shouldHideNavbar, setShouldHideNavbar] = useState(false);
@@ -27,7 +29,9 @@ const Navbar = () => {
     { id: 2, page: "Админ", path: "/admin/picture" },
   ];
 
-  return (
+  const pathname = usePathname();
+
+  return pathname?.slice(0, 6) !== "/admin" ? (
     <nav className="navbar">
       <ul>
         {pages.map((page) => (
@@ -37,7 +41,7 @@ const Navbar = () => {
         ))}
       </ul>
     </nav>
-  );
+  ) : null;
 };
 
 export default Navbar;
