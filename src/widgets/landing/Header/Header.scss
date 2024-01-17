@@ -1,0 +1,146 @@
+@import "../../../shared/variables.scss";
+
+.header {
+  height: 700px;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 30px;
+  background-color: #f9f9f9;
+
+  &__text {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding-left: 70px;
+    gap: 10px;
+    h1 {
+      color: $dark;
+      font-size: 76px;
+      line-height: 80px;
+    }
+
+    p {
+      color: $trans;
+      font-size: 24px;
+      font-weight: 500;
+      margin-bottom: 10px;
+    }
+
+    button {
+      padding: 20px;
+      width: 200px;
+    }
+  }
+
+  &__imgs {
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    &-item {
+      position: absolute;
+      padding: 10px;
+      height: 400px;
+      width: 300px;
+      box-shadow: 38.817px 11.763px 58.813px 0px
+        rgba(199, 199, 199, 0.6);
+      background-color: #fff;
+      transform: rotate(10deg);
+
+      img {
+        height: 80%;
+        width: 100%;
+        object-fit: cover;
+      }
+    }
+
+    #header-img2 {
+      box-shadow: -10px 11px 58px 0px rgba(199, 199, 199, 0.6);
+      margin-right: 100px;
+    }
+
+    #header-img1 {
+      transform: rotate(20deg);
+    }
+  }
+}
+
+@media screen and (max-width: 1024px) {
+  .header {
+    height: 600px;
+    &__text {
+      padding-left: 30px;
+
+      h1 {
+        font-size: 66px;
+        line-height: 70px;
+      }
+    }
+
+    &__imgs {
+      &-item {
+        height: 350px;
+        width: 250px;
+      }
+    }
+  }
+}
+
+@media screen and (max-width: 768px) {
+  .header {
+    padding: 100px 0;
+    height: fit-content;
+    grid-template-columns: 1fr;
+    gap: 70px;
+    &__text {
+      padding: 0 30px;
+      text-align: center;
+      align-items: center;
+      gap: 20px;
+
+      h1 {
+        font-size: 56px;
+        line-height: 60px;
+      }
+    }
+
+    &__imgs {
+      height: 400px;
+      &-item {
+        height: 400px;
+        width: 300px;
+      }
+    }
+  }
+}
+
+@media screen and (max-width: 550px) {
+  .header {
+    padding: 100px 0;
+    &__text {
+      padding: 0 20px;
+
+      h1 {
+        font-size: 46px;
+        line-height: 50px;
+      }
+
+      p {
+        font-size: 18px;
+      }
+    }
+
+    &__imgs {
+      height: 300px;
+      &-item {
+        height: 300px;
+        width: 200px;
+      }
+
+      #header-img2 {
+        margin-right: 50px;
+      }
+    }
+  }
+}

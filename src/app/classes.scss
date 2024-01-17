@@ -1,0 +1,42 @@
+@import "../shared/variables.scss";
+
+.padding {
+  padding: 100px 180px;
+}
+
+.btn-dark {
+  background-color: black;
+  border-radius: $radius;
+  color: white;
+}
+
+.btn-dark-outline {
+  background-color: #fff;
+  border-radius: $radius;
+  border: 2px solid black;
+  color: black;
+}
+
+@media screen and (max-width: 1440px) {
+  .padding {
+    padding: 70px;
+  }
+}
+
+@media screen and (max-width: 1024px) {
+  .padding {
+    padding: 60px 30px;
+  }
+}
+
+@media screen and (max-width: 768px) {
+  .padding {
+    padding: 50px 30px;
+  }
+}
+
+@media screen and (max-width: 550px) {
+  .padding {
+    padding: 50px 20px;
+  }
+}
