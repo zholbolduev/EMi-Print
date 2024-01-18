@@ -6,6 +6,7 @@ import { usePathname } from "next/navigation";
 import { useEffect, useState } from "react";
 import burger_menu from "../../../shared/icons/burger-menu-icon.svg";
 import Image from "next/image";
+import Logo from "@/entities/Logo/Logo";
 
 const Navbar = () => {
   const pages = [
@@ -35,12 +36,7 @@ const Navbar = () => {
 
   return pathname?.slice(0, 6) !== "/admin" ? (
     <nav className={`nav ${navStyle ? "nav-scroll" : ""}`}>
-      <Link href="/" className="nav__logo">
-        <span>
-          EM<span>i</span>
-        </span>{" "}
-        <span>Print</span>
-      </Link>
+      <Logo />
       <ul>
         {pages.map((page) => (
           <li key={page.id}>

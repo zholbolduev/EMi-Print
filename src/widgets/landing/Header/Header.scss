@@ -43,8 +43,7 @@
       padding: 10px;
       height: 400px;
       width: 300px;
-      box-shadow: 38.817px 11.763px 58.813px 0px
-        rgba(199, 199, 199, 0.6);
+      box-shadow: $card-shadow;
       background-color: #fff;
       transform: rotate(10deg);
 
@@ -124,10 +123,6 @@
       h1 {
         font-size: 46px;
         line-height: 50px;
-      }
-
-      p {
-        font-size: 18px;
       }
     }
 
