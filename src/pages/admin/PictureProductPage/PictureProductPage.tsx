@@ -1,22 +1,32 @@
+// PictureProductPage.tsx
+
 "use client";
 
 import "./PictureProductPage.scss";
-import React, { useState } from "react";
-import { params, products } from "./variables";
+import React, { useState, useEffect } from "react";
+import { params, initialProducts } from "./variables";
 import Checkbox from "@/shared/UI/Checkbox/Checkbox";
 import Link from "next/link";
+import { PictureProductPageAction } from "./PictureProductPageAction";
 
 const PictureProductPage = () => {
   const [select, setSelect] = useState<boolean>(false);
   const [productsId, setProductsId] = useState<number[]>([]);
+  // const [products, setProducts] = useState([]);
+
+  const [products, setProducts] = useState(initialProducts);
+
+  useEffect(() => {
+    PictureProductPageAction.getProducts();
+  }, []);
 
   const selectAll = () => {
     if (productsId.length === products.length) {
       setProductsId([]);
     } else {
       let ids: number[] = [];
-      products.map((id) => {
-        ids.push(id.id);
+      products.forEach((product) => {
+        ids.push(product.id);
       });
 
       setProductsId([...ids]);
@@ -25,13 +35,22 @@ const PictureProductPage = () => {
 
   const selectProduct = (id: number) => {
     if (productsId.includes(id)) {
-      const removeProduct = productsId.filter(
-        (product) => product !== id
-      );
+      const removeProduct = productsId.filter((productId) => productId !== id);
 
       setProductsId(removeProduct);
     } else {
       setProductsId((prev) => [...prev, id]);
+    }
+  };
+
+  const deleteSelectedProducts = async () => {
+    try {
+      await PictureProductPageAction.deleteProducts(productsId);
+      await PictureProductPageAction.getProducts();
+      setProductsId([]);
+      setSelect(false);
+    } catch (error) {
+      console.error("Error deleting products:", error);
     }
   };
 
@@ -43,14 +62,13 @@ const PictureProductPage = () => {
       </div>
 
       <div className="picture-product-page__actions">
-        <button onClick={() => setSelect((prev) => !prev)}>
-          Выбрать
-        </button>
+        <button onClick={() => setSelect((prev) => !prev)}>Выбрать</button>
         <button
           className={`picture-product-page__actions-dlt-btn${
             productsId.length !== 0 ? "_active" : ""
           }`}
           disabled={productsId.length === 0}
+          onClick={deleteSelectedProducts}
         >
           Удалить
         </button>
@@ -85,9 +103,7 @@ const PictureProductPage = () => {
             <li>{product.title}</li>
             <li>{product.price}</li>
             <li>{product.price_with_text}</li>
-            <li>
-              {product.isAvailabel ? "В наличии" : "Нет в наличии"}
-            </li>
+            <li>{product.isAvailable ? "В наличии" : "Нет в наличии"}</li>
           </ul>
         ))}
       </div>

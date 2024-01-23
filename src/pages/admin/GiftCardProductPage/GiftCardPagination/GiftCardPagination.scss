@@ -1,0 +1,62 @@
+/* GiftCardPagination.scss */
+
+.giftCard-pagination {
+  display: flex;
+  list-style: none;
+  padding: 0;
+  margin: 20px 0;
+  justify-content: center;
+
+  .arrow-btn {
+    background-color: white;
+    border: 1px solid #ccc;
+    color: black;
+    cursor: pointer;
+    padding: 5px 10px;
+    margin: 0 5px;
+    font-size: 14px;
+
+    &:hover {
+      background-color: #eee;
+    }
+
+    &:disabled {
+      cursor: not-allowed;
+      opacity: 0.5;
+    }
+
+    &.active {
+      background-color: #333;
+      color: white;
+    }
+  }
+
+  .page-numbers {
+    display: flex;
+    align-items: center;
+
+    button {
+      background-color: white;
+      border: 1px solid #ccc;
+      color: black;
+      cursor: pointer;
+      padding: 5px 10px;
+      margin: 0 5px;
+      font-size: 14px;
+
+      &:hover {
+        background-color: #eee;
+      }
+
+      &:disabled {
+        cursor: not-allowed;
+        opacity: 0.5;
+      }
+
+      &.active {
+        background-color: #333;
+        color: white;
+      }
+    }
+  }
+}

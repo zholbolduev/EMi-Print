@@ -1,0 +1,15 @@
+@import "../../../../shared//variables.scss";
+
+.searchBlock {
+  margin-left: auto;
+}
+
+.searchBlock > input {
+  padding: 10px;
+  border: 2px solid #1a191f;
+  border-radius: 5px;
+  background-color: #1a191f;
+  border-color: $blue;
+  outline: none;
+  color: white;
+}

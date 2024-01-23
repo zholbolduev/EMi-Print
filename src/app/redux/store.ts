@@ -1,12 +1,20 @@
-"use client";
+// rootReducer.ts
 
 import { combineReducers, configureStore } from "@reduxjs/toolkit";
 import loginReducer from "../../features/AuthFeatures/LoginFeature/LoginFeatureSlice";
 import registerReducer from "../../features/AuthFeatures/RegisterFeature/RegisterFeatureSlice";
+import pictureProductReducer from "../../pages/admin/PictureProductPage/PictureProductPageSlice";
+import ReadySolutionProductPageSlice from "../../pages/admin/ReadySolutionProductPage/ReadySolutionProductPageSlice";
+import createPictureReducer from "../../pages/admin/CreateReadySolutionPage/CreateReadySolutionPageSlice";
+import createReadySolutionSlice from "../../pages/admin/CreateReadySolutionPage/CreateReadySolutionPageSlice";
 
 export const rootReducers = combineReducers({
   registerReducer,
   loginReducer,
+  pictureProductReducer,
+  createPictureReducer,
+  readySolutionProductPageSlice: ReadySolutionProductPageSlice,
+  createReadySolutionSlice,
 });
 
 export const setupStore = () => {

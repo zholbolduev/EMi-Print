@@ -1,24 +1,24 @@
-export const products = [
+export const initialProducts = [
   {
     id: 23,
     title: "Мини полароид",
     price: 16,
     price_with_text: 18,
-    isAvailabel: true,
+    isAvailable: true,
   },
   {
     id: 21,
     title: "Полароид",
     price: 14,
     price_with_text: 16,
-    isAvailabel: false,
+    isAvailable: false,
   },
   {
     id: 34,
     title: "Фото Карточки",
     price: 12,
     price_with_text: 14,
-    isAvailabel: true,
+    isAvailable: true,
   },
 ];
 

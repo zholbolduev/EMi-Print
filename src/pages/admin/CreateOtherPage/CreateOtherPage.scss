@@ -1,4 +1,4 @@
-.create-picture {
+.create-other {
   display: flex;
   flex-direction: column;
   gap: 30px;
@@ -6,6 +6,12 @@
     font-size: 32px;
     font-weight: 500;
   }
+}
+
+/* CreateOtherPage.scss */
+
+.create-other {
+  /* Ваши существующие стили */
 }
 
 .uploaded-images-container {
